@@ -73,17 +73,13 @@ def audienta_tronsoane(other_file, time_slots):
                                        axis=1).set_precision(2)
 
 
-# work in progress
-
-# def audienta_tronsoane_for_graph(other_file, time_slots):
-#     for tronson in tronsoane_dict:
-#         if tronson['tronson'] == time_slots:
-#             slot = tronson.get('loc')
-#             print(slot)
-#             slot.pop(-1)
-#             new_csv = pd.read_csv(other_file)
-#             new_csv = new_csv.iloc[slot, 1:4]
-#             print(new_csv)
-#             return new_csv
+def audienta_tronsoane_for_graph(other_file, time_slots):
+    for tronson in tronsoane_dict:
+        if tronson['tronson'] == time_slots:
+            slot = tronson.get('loc')
+            slot_without_sum = slot[:-1]
+            csv = pd.read_csv(other_file)
+            csv = csv.iloc[slot_without_sum, 1:4]
+            return csv.style.set_precision(2)
 
 
